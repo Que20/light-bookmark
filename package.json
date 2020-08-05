@@ -1,0 +1,31 @@
+{
+  "name": "light-bookmark",
+  "version": "1.0.0",
+  "description": "A NodeJS Bookmark manager",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Que20/light-bookmark.git"
+  },
+  "homepage": "https://github.com/Que20/light-bookmark#readme",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "bookmark"
+  ],
+  "dependencies": {
+    "express": "4.16.4",
+    "url-metadata": "2.4.0",
+    "pug": "2.0.4",
+    "body-parser": "latest",
+    "express-session": "latest",
+    "nodemon": "latest",
+    "mongoose": "latest",
+    "html-entities": "latest",
+    "crypto-js": "latest"
+  },
+  "author": "Kevin MAAREK",
+  "license": "ISC"
+}

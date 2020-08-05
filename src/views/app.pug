@@ -1,0 +1,66 @@
+html
+  head
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    script(src='https://code.jquery.com/jquery-3.1.1.min.js')
+    script(src='https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js')
+    script(src='script.js')
+    link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css", type='text/css')
+    link(rel="stylesheet", href="style.css", type='text/css')
+  body
+  .navbar
+    .ui.secondary.menu
+      .item
+        form(action="javascript:$('.tiny.modal').modal('show')")
+          button.ui.teal.button
+            i.add.icon
+            |  Add
+      .right.menu
+        .item
+          form(method='POST' action='#')
+            .ui.icon.input
+              input(type='text', name='search', placeholder='Search', value=`${search_req}`)
+              i.search.link.icon
+        .item
+          form(action="javascript:$('.small.modal').modal('show')")
+            button.circular.ui.icon.button
+              i.icon.cog
+        .item
+          form(method='GET' action='/logout')
+            button.ui.negative.basic.button Logout
+  .container
+    //- .ui.cards
+    //-   each val in bookmarks
+    //-     .card.fluid.eq-card
+    //-       .content.bookmark
+    //-         a.remove(href='/app?rm='+`${val._id}`)
+    //-           i.right.floated.red.trash.alternate.outline.icon
+    //-         a(href=`${val.url}`)
+    //-           .header #{val.title}
+    //-           .meta #{val.description}
+    //-           .description #{val.url.length > 40 ? val.url.substring(0, 40) + '...' : val.url}
+    .ui.relaxed.divided.list
+      each val in bookmarks
+        .item
+          .right.floated.content
+            p #{new Date(parseInt(val.date, 10)).toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+            .right-align
+              a(href='/app?rm='+`${val._id}`)
+                i.right.floated.red.trash.alternate.outline.icon
+          i.bookmark.outline.middle.aligned.icon
+          .content
+            a.teal.header(href=`${val.url}`) #{val.title}
+            .description #{val.description}
+            a(href=`${val.url}`) #{val.url.length > 40 ? val.url.substring(0, 40) + '...' : val.url}
+
+  .ui.tiny.modal
+    form.ui.form(method='POST' action='#')
+      .field
+        input(type='text' name='url' placeholder='' value='http://')
+      button.ui.button(type='submit') Submit
+
+  .ui.small.modal
+    p Logged as #{name}
+    p Token :
+      pre #{token}
+    p Made with ❤️ by Kevin MAAREK
+    i.github.icon

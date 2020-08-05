@@ -1,0 +1,24 @@
+html
+    head
+        meta(name='viewport' content='width=device-width, initial-scale=1')
+        script(src='https://code.jquery.com/jquery-3.1.1.min.js')
+        script(src='https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js')
+        link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css", type='text/css')
+        link(rel="stylesheet", href="style.css", type='text/css')
+    body
+        .login
+            if message
+                .ui.message
+                    p #{message}
+            form.ui.form(method='POST' action='/app')
+                .field
+                    label Login
+                    input(type='text' name='login' placeholder='')
+                .field
+                    label Password
+                    input(type='password' name='password' placeholder='')
+                .field
+                    .ui.checkbox
+                        label Keep me loged in
+                        input.hidden(type='checkbox' tabindex='0')
+                button.ui.button(type='submit') Go
